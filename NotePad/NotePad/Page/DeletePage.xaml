@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotePad.Page.DeletePage"
+             NavigationPage.HasNavigationBar="True"
+             Title="No notes selected"
+             BackgroundColor="#f3f2f3">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Margin="20,30,20,0" Padding="0" CornerRadius="20" BackgroundColor="#e6e7e7">
+                <SearchBar Placeholder="Search a note" FontSize="Small" TextColor="Black" TextChanged="SearchBar_TextChanged" HorizontalOptions="FillAndExpand"/>
+            </Frame>
+
+            <ScrollView VerticalScrollBarVisibility="Always" Margin="0,30,0,0">
+                <StackLayout>
+                    <Label x:Name="LblNoNotes" Text="No notes" FontSize="Large" TextColor="Black" HorizontalTextAlignment="Center" IsVisible="false" HorizontalOptions="CenterAndExpand"/>
+                    <ListView x:Name="ListViewNotes" RowHeight="80" Margin="20,0,20,0" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Frame BackgroundColor="White" Padding="10" CornerRadius="5" HasShadow="False" HorizontalOptions="FillAndExpand">
+                                                <StackLayout>
+                                                    <Label Text="{Binding Title}" FontSize="Medium" TextColor="Black"/>
+                                                    <Label Text="{Binding Date}" FontSize="Small" />
+                                                </StackLayout>
+                                            </Frame>
+                                            <CheckBox BackgroundColor="#f3f2f3" CheckedChanged="CheckBox_CheckedChanged" VerticalOptions="CenterAndExpand" Margin="0,0,20,0"
+                                                      IsChecked="{Binding IsChecked}" Color="Blue" AutomationId="{Binding Id}"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+            
+            <Frame BackgroundColor="Transparent" Padding="2" VerticalOptions="EndAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <ImageButton x:Name="imgBtnDelete" Source = "deleteRecycle.png" Clicked="BtnDeleteNote_Clicked" BackgroundColor = "#f3f2f3" HeightRequest = "50" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

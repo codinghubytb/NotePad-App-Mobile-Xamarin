@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotePad.Page.ViewNotePage"
+             BackgroundColor="#f3f2f3">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Margin="20,0,20,0" VerticalOptions="FillAndExpand" >
+                <Entry x:Name="EntryTitle" FontSize="30" HeightRequest="70" Placeholder="Title Note" PlaceholderColor="Gray" FontAttributes="Bold"/>
+                <StackLayout Margin="0,10,20,0" >
+                    <Label x:Name="LblDate" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+                <Frame VerticalOptions="FillAndExpand">
+                    <Editor x:Name="EditorDescription" VerticalOptions="FillAndExpand" Placeholder="Please enter a note..." FontSize="Small" />
+                </Frame>
+            </StackLayout>
+            <Frame BackgroundColor="Transparent" Padding="2">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BtnShare_Click" ></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source = "share.png" BackgroundColor = "#f3f2f3" HeightRequest="28" HorizontalOptions="FillAndExpand"/>
+                        <Label Text="Share" HorizontalTextAlignment="Center" />
+                    </StackLayout >
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BtnClear_Click"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source = "clear.png"  BackgroundColor = "#f3f2f3" HeightRequest = "28" HorizontalOptions="FillAndExpand"/>
+                        <Label Text="Clear" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="BtnSave_Click"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source = "save.png" BackgroundColor = "#f3f2f3" HeightRequest = "28" HorizontalOptions="FillAndExpand"/>
+                        <Label Text="Save" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

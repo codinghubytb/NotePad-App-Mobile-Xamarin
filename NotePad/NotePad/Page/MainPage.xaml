@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NotePad.Page.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#f3f2f3">
+    <ContentPage.Content>
+        <AbsoluteLayout x:Name="AbsoluteLayout" BackgroundColor="Transparent">
+            
+            <StackLayout  Margin="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TappedOption_Click"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+
+                <Frame x:Name="frameTop" BackgroundColor="Transparent"  Margin="20,0,20,0" Padding="0,10,0,0" IsVisible="true">
+                    <ImageButton Clicked="BtnOption_Clicked" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Source="dotsBlack.png" WidthRequest="30" 
+                                 HeightRequest="30" BackgroundColor="#f3f2f3" />
+                </Frame>
+
+                <StackLayout x:Name="stackTop" Margin="20,0,20,0" IsVisible="true">
+                    <Label Text="All notes" FontAttributes="Bold" FontSize="30" TextColor="Black"/>
+                    <Label x:Name="LblNbNotes" Text="76 notes" FontSize="Small"/>
+                </StackLayout>
+
+                <Frame Margin="20,30,20,0" Padding="0" CornerRadius="20" BackgroundColor="#e6e7e7">
+                    <SearchBar x:Name="searchBarElement" Placeholder="Search a note"  TextChanged="SearchBar_TextChanged" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand">
+                        <SearchBar.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SearchBar_Tapped" />
+                        </SearchBar.GestureRecognizers> 
+                    </SearchBar>
+                </Frame>
+
+                <ScrollView VerticalScrollBarVisibility="Always" Margin="0,30,0,0">
+                    <StackLayout>
+                        <Label x:Name="LblNoNotes" Text="No notes" FontSize="Large" TextColor="Black" HorizontalTextAlignment="Center" IsVisible="false" HorizontalOptions="CenterAndExpand"/>
+                        <ListView x:Name="ListViewNotes" RowHeight="80" Margin="20,0,20,0" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" 
+                                  SeparatorVisibility="None" ItemSelected="ListViewNotes_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Vertical">
+                                            <StackLayout Orientation="Horizontal" >
+                                                <Frame BackgroundColor="White" Padding="10" CornerRadius="5" HasShadow="False" HorizontalOptions="FillAndExpand">
+                                                    <StackLayout>
+                                                        <Label Text="{Binding Title}" FontSize="Medium" TextColor="Black"/>
+                                                        <Label Text="{Binding Date}" FontSize="Small" />
+                                                    </StackLayout>
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+
+
+                <Frame BackgroundColor="Transparent" Padding="2" VerticalOptions="EndAndExpand">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                        <Image Source="notePadLogo.png" BackgroundColor="#f3f2f3" HeightRequest="30"/>
+                        <Label Text="Notes" FontSize="12" HorizontalOptions="CenterAndExpand" VerticalOptions="End" TextColor="Black"/>
+                    </StackLayout>
+                </Frame>
+                
+            </StackLayout>
+            
+            <Frame x:Name="frameOption" Padding="0" IsVisible="false">
+                <StackLayout>
+                    <Button Text="Delete" BackgroundColor="#ffffff" Clicked="BtnDelete_Click"/>
+                </StackLayout>
+            </Frame>
+            
+            <Button Text="+" WidthRequest="50" CornerRadius="50" BackgroundColor="SkyBlue" TextColor="White" FontSize="Large"
+                        AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.9,0.9" Clicked="BtnCreateNote_Clicked" />
+            
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
